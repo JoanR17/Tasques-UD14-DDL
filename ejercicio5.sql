@@ -23,10 +23,11 @@ DROP TABLE IF EXISTS `Almacenes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Almacenes` (
-  `Identity` int NOT NULL,
+  `Codigo` int NOT NULL,
   `Lugar` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `Capacidad` int DEFAULT NULL,
-  PRIMARY KEY (`Identity`)
+  PRIMARY KEY (`Codigo`),
+  UNIQUE KEY `Codigo_UNIQUE` (`Codigo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -53,7 +54,7 @@ CREATE TABLE `Cajas` (
   `Almacen` int DEFAULT NULL,
   PRIMARY KEY (`NumReferencia`),
   KEY `Almacen_idx` (`Almacen`),
-  CONSTRAINT `Almacen` FOREIGN KEY (`Almacen`) REFERENCES `Almacenes` (`Identity`)
+  CONSTRAINT `Almacen` FOREIGN KEY (`Almacen`) REFERENCES `Almacenes` (`Codigo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -75,4 +76,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-01-28 10:13:49
+-- Dump completed on 2022-01-28 10:49:09
